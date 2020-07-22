@@ -1,10 +1,13 @@
 {
-    "name": "vitaliy/braingames.localhost",
+    "name": "integralik/braingames.localhost",
     "authors": [
         {
-            "name": "Vitaliy",
+            "name": "Vitaliy Kvitkovskiy",
             "email": "integralik@gmail.com"
         }
     ],
+	"bin": [
+      "bin/brain-games"
+    ]
     "require": {}
 }
