@@ -4,4 +4,4 @@
 
 <h3>BrainEven game</h3>
 
-<script src="https://asciinema.org/a/4oxWVXK6yfxBkbix7szJE1OEA.js" id="asciicast-4oxWVXK6yfxBkbix7szJE1OEA" async></script>
+<a href="https://asciinema.org/a/4oxWVXK6yfxBkbix7szJE1OEA"><img src="https://asciinema.org/a/4oxWVXK6yfxBkbix7szJE1OEA.png" width="836"/></a>
