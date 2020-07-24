@@ -23,7 +23,7 @@ class BrainCalc extends AGame
         $operations = ['+', '-', '*'];
 
         $firstArg = rand(0, $max_number);
-        $operation = $operations[rand(0, count($operations))];
+        $operation = $operations[rand(0, count($operations) - 1)];
         $secondArg = rand(0, $max_number);
 
         $text = $firstArg . ' ' . $operation . ' ' . $secondArg;
