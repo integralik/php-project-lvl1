@@ -8,9 +8,10 @@
     ],
 	"bin": [
       "bin/brain-games",
-	  "bin/brain-even",
       "bin/brain-calc",
+	  "bin/brain-even",
       "bin/brain-gcd",
+      "bin/brain-prime",
       "bin/brain-progression"
     ],
 	"minimum-stability": "dev",
