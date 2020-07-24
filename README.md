@@ -2,6 +2,6 @@
 
 <img src="https://github.com/integralik/php-project-lvl1/workflows/PHP%20Project%20Level1%20CI/badge.svg">
 
-<h3>BrainEven game</h3>
+<h3>BrainEven game asciinema</h3>
 
-<script src="https://asciinema.org/a/4oxWVXK6yfxBkbix7szJE1OEA.js" id="asciicast-4oxWVXK6yfxBkbix7szJE1OEA" async></script>
+<a href="https://asciinema.org/a/4oxWVXK6yfxBkbix7szJE1OEA"><img src="https://asciinema.org/a/4oxWVXK6yfxBkbix7szJE1OEA.png" width="836"/></a>
