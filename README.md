@@ -17,3 +17,7 @@
 <h3>BrainProgression game</h3>
 
 <a href="https://asciinema.org/a/4vyq83aDlgRTwWx7NAFsnWKvl" target="_blank"><img src="https://asciinema.org/a/4vyq83aDlgRTwWx7NAFsnWKvl.svg" /></a>
+
+<h3>BrainPrime game</h3>
+
+<a href="https://asciinema.org/a/lWbz3IO8KWlntOl8ID4DkZN0q" target="_blank"><img src="https://asciinema.org/a/lWbz3IO8KWlntOl8ID4DkZN0q.svg" /></a>
