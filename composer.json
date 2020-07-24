@@ -12,7 +12,8 @@
     ],
 	"minimum-stability": "dev",
 	"scripts": {
-		"phpcs": "phpcs"
+		"phpcs": "phpcs",
+		"brain-even": "brain-even"
 	},
     "require": {
         "wp-cli/php-cli-tools": "^0.11.11"
