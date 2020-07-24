@@ -8,7 +8,6 @@
         }
     ],
 	"bin": [
-      "bin/brain-games",
       "bin/brain-calc",
 	  "bin/brain-even",
       "bin/brain-gcd",
