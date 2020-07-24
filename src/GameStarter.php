@@ -2,6 +2,7 @@
 
 namespace Brain\Games;
 
+use Brain\Games\Games\BrainCalc;
 use Brain\Games\Games\BrainEven;
 
 class GameStarter

@@ -2,11 +2,9 @@
 
 namespace Brain\Games\Games;
 
-use Brain\Games\IGame;
-use function cli\line;
-use function cli\prompt;
+use Brain\Games\AGame;
 
-class BrainEven implements IGame
+class BrainEven extends AGame
 {
     public function __construct()
     {
@@ -17,22 +15,23 @@ class BrainEven implements IGame
         return 'Answer "yes" if the number is even, otherwise answer "no".';
     }
 
-    public function getQuestionText()
+    public function getQuestionInfo()
     {
         $max_number = 100;
         $info = rand(0, $max_number);
         $text = $info;
         return [$text, $info];
     }
-    
-    public function checkAnswer($number, $answer)
+
+    public function getCorrectAnswer($questionData)
     {
-        if ($number % 2 === 0 && $answer === 'yes') {
-            return true;
+        $number = $questionData;
+        if ($number % 2 === 0) {
+            $answer = 'yes';
+        } else {
+            $answer = 'no';
         }
-        if ($number % 2 === 1 && $answer === 'no') {
-            return true;
-        }
-        return false;
+        $this->lastCorrectAnswer = $answer;
+        return $answer;
     }
 }

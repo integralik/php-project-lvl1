@@ -21,9 +21,10 @@
 	"autoload": {
         "files": [
             "src/GameCore.php",
-            "src/IGame.php",
+            "src/AGame.php",
             "src/GameStarter.php",
-            "src/Games/BrainEven.php"
+            "src/Games/BrainEven.php",
+            "src/Games/BrainCalc.php"
         ]
     },
     "require-dev": {
