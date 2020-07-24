@@ -85,7 +85,7 @@ class GameCore
                 $this->confirmCorrectAnswer();
             }
         }
-        
+
         if ($isLost) {
             $this->loseGame();
         } else {
