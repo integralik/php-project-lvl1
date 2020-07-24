@@ -4,6 +4,7 @@ namespace Brain\Games;
 
 use Brain\Games\Games\BrainCalc;
 use Brain\Games\Games\BrainEven;
+use Brain\Games\Games\BrainGreatCommonDivisor;
 
 class GameStarter
 {
@@ -15,6 +16,9 @@ class GameStarter
                 break;
             case 'brain-calc':
                 $game = new BrainCalc();
+                break;
+            case 'brain-gcd':
+                $game = new BrainGreatCommonDivisor();
                 break;
         }
         return $game;

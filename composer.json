@@ -9,12 +9,12 @@
 	"bin": [
       "bin/brain-games",
 	  "bin/brain-even",
-      "bin/brain-calc"
+      "bin/brain-calc",
+      "bin/brain-gcd"
     ],
 	"minimum-stability": "dev",
 	"scripts": {
-		"phpcs": "phpcs",
-		"brain-even": "brain-even"
+		"phpcs": "phpcs"
 	},
     "require": {
         "wp-cli/php-cli-tools": "^0.11.11"
