@@ -13,3 +13,7 @@
 <h3>BrainGCD game</h3>
 
 <a href="https://asciinema.org/a/3rDmqr7OnbRNJbNl4npiZUbJx" target="_blank"><img src="https://asciinema.org/a/3rDmqr7OnbRNJbNl4npiZUbJx.svg" /></a>
+
+<h3>BrainProgression game</h3>
+
+<a href="https://asciinema.org/a/4vyq83aDlgRTwWx7NAFsnWKvl" target="_blank"><img src="https://asciinema.org/a/4vyq83aDlgRTwWx7NAFsnWKvl.svg" /></a>
