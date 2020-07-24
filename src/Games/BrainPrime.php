@@ -34,6 +34,12 @@ class BrainPrime extends AGame
     {
         $number = $questionData;
 
+        if ($number == 0 || $number == 1) {
+            $answer = 'no';
+            $this->lastCorrectAnswer = $answer;
+            return $answer;
+        }
+
         $start_divisor = 2;
 
         $answer = "yes";
