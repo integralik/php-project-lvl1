@@ -4,4 +4,8 @@
 
 <h3>BrainEven game</h3>
 
-<a href="https://asciinema.org/a/4oxWVXK6yfxBkbix7szJE1OEA"><img src="https://asciinema.org/a/4oxWVXK6yfxBkbix7szJE1OEA.png" width="836"/></a>
+<a href="https://asciinema.org/a/49omeD6MXsIxcqMG56qalo4yG" target="_blank"><img src="https://asciinema.org/a/49omeD6MXsIxcqMG56qalo4yG.svg" /></a>
+
+<h3>BrainCalc game</h3>
+
+<a href="https://asciinema.org/a/q6WOdWBCblaASHFYQUw1Xxh6i" target="_blank"><img src="https://asciinema.org/a/q6WOdWBCblaASHFYQUw1Xxh6i.svg" /></a>
