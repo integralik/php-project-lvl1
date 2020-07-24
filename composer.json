@@ -20,7 +20,9 @@
     },
 	"autoload": {
         "files": [
-            "src/Cli.php",
+            "src/GameCore.php",
+            "src/IGame.php",
+            "src/GameStarter.php",
             "src/Games/BrainEven.php"
         ]
     },

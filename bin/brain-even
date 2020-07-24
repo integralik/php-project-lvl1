@@ -8,6 +8,6 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use Brain\Games\Games\BrainEven;
+use Brain\Games\GameStarter;
 
-BrainEven::run();
+GameStarter::run('brain-even');
