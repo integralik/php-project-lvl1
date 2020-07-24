@@ -47,7 +47,8 @@ class GameCore
 
     public function tellCorrectAnswer()
     {
-        line("'{$this->currentAnswer}' is wrong answer ;(. Correct answer was '{$this->game->getLastCorrectAnswer()}'.");
+        line("'{$this->currentAnswer}' is wrong answer ;(. Correct answer was " .
+            "'{$this->game->getLastCorrectAnswer()}'.");
     }
 
     public function checkAnswer($questionData, $answer)
@@ -91,6 +92,5 @@ class GameCore
         } else {
             $this->winGame();
         }
-
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Brain\Games;
 
 abstract class AGame
