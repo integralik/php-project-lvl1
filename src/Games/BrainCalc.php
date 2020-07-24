@@ -8,6 +8,10 @@ class BrainCalc extends AGame
 {
     public const MAX_NUMBER = 20;
 
+    protected const OPERATION_ADD = '+';
+    protected const OPERATION_SUBTRACT = '-';
+    protected const OPERATION_MULTIPLY = '*';
+
     public $lastCorrectAnswer = null;
 
     public function __construct()
@@ -21,7 +25,11 @@ class BrainCalc extends AGame
 
     public function getQuestionInfo()
     {
-        $operations = ['+', '-', '*'];
+        $operations = [
+            self::OPERATION_ADD,
+            self::OPERATION_SUBTRACT,
+            self::OPERATION_MULTIPLY
+        ];
 
         $firstArg = rand(0, self::MAX_NUMBER);
         $operation = $operations[rand(0, count($operations) - 1)];
@@ -40,14 +48,19 @@ class BrainCalc extends AGame
     {
         [$firstArg, $operation, $secondArg] = $questionData;
 
-        if ($operation == '+') {
-            $answer = $firstArg + $secondArg;
-        } elseif ($operation == '-') {
-            $answer = $firstArg - $secondArg;
-        } elseif ($operation == '*') {
-            $answer = $firstArg * $secondArg;
+        switch ($operation) {
+            case self::OPERATION_ADD:
+                $answer = $firstArg + $secondArg;
+                break;
+            case self::OPERATION_SUBTRACT:
+                $answer = $firstArg - $secondArg;
+                break;
+            case self::OPERATION_MULTIPLY:
+                $answer = $firstArg * $secondArg;
+                break;
         }
-        $this->lastCorrectAnswer = $answer;
+
+        $this->setLastCorrectAnswer($answer);
         return $answer;
     }
 }

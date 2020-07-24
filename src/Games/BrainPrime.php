@@ -8,6 +8,7 @@ class BrainPrime extends AGame
 {
     public const MAX_NUMBER = 100;
 
+    private const START_DIVISOR = 2;
 
     public $lastCorrectAnswer = null;
 
@@ -35,22 +36,20 @@ class BrainPrime extends AGame
         $number = $questionData;
 
         if ($number == 0 || $number == 1) {
-            $answer = 'no';
+            $answer = AGame::ANSWER_NO;
             $this->lastCorrectAnswer = $answer;
             return $answer;
         }
 
-        $start_divisor = 2;
-
-        $answer = "yes";
-        for ($i = $number - 1; $i >= $start_divisor; $i--) {
+        $answer = AGame::ANSWER_YES;
+        for ($i = $number - 1; $i >= self::START_DIVISOR; $i--) {
             if ($number % $i == 0) {
-                $answer = 'no';
+                $answer = AGame::ANSWER_NO;
                 break;
             }
         }
 
-        $this->lastCorrectAnswer = $answer;
+        $this->setLastCorrectAnswer($answer);
         return $answer;
     }
 }

@@ -7,7 +7,9 @@ use function cli\prompt;
 
 class GameCore
 {
-    private $name = null;
+    public const TRIES_COUNT = 3;
+
+    private $username = null;
     private $game;
     private $currentAnswer = null;
 
@@ -16,36 +18,36 @@ class GameCore
         $this->game = $game;
     }
 
-    private function welcome()
+    protected function welcomeUser()
     {
         line('Welcome to Brain Games!');
         line($this->game->getWelcomeMessage());
         line('');
     }
 
-    private function getName()
+    protected function getUsername()
     {
-        $name = prompt('May I have your name?');
-        line("Hello, %s!", $name);
-        $this->name = $name;
+        $username = prompt('May I have your name?');
+        line("Hello, %s!", $username);
+        $this->username = $username;
     }
 
-    public function winGame()
+    protected function winGame()
     {
-        line("Congratulations, {$this->name}!");
+        line("Congratulations, {$this->username}!");
     }
 
-    public function loseGame()
+    protected function loseGame()
     {
-        line("Let's try again, {$this->name}!");
+        line("Let's try again, {$this->username}!");
     }
 
-    public function confirmCorrectAnswer()
+    protected function confirmCorrectAnswer()
     {
         line('Correct!');
     }
 
-    public function tellCorrectAnswer()
+    protected function tellCorrectAnswer()
     {
         line("'{$this->currentAnswer}' is wrong answer ;(. Correct answer was " .
             "'{$this->game->getLastCorrectAnswer()}'.");
@@ -57,13 +59,14 @@ class GameCore
         return $correctAnswer == $answer;
     }
 
-    public function giveTry()
+    protected function playOnce()
     {
-        line('');
         [$questionText, $questionData] = $this->game->getQuestionInfo();
-        line("Question: " . $questionText);
 
+        line('');
+        line("Question: " . $questionText);
         $answer = prompt('Your answer');
+
         $this->currentAnswer = $answer;
 
         return $this->checkAnswer($questionData, $answer);
@@ -71,14 +74,12 @@ class GameCore
 
     public function play()
     {
-        $this->welcome();
-        $this->getName();
-
-        $triesAmount = 3;
+        $this->welcomeUser();
+        $this->getUserName();
 
         $isLost = false;
-        for ($i = 0; $i < $triesAmount; $i++) {
-            if (!$this->giveTry()) {
+        for ($i = 0; $i < self::TRIES_COUNT; $i++) {
+            if (!$this->playOnce()) {
                 $this->tellCorrectAnswer();
                 $isLost = true;
                 break;

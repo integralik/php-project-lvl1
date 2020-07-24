@@ -46,7 +46,7 @@ class BrainGreatCommonDivisor extends AGame
             }
         }
 
-        $this->lastCorrectAnswer = $answer;
+        $this->setLastCorrectAnswer($answer);
         return $answer;
     }
 }

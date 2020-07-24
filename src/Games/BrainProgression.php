@@ -8,7 +8,7 @@ class BrainProgression extends AGame
 {
     public const MAX_NUMBER = 100;
     public const MAX_STEP = 10;
-    public const PROGRESSION_LENGTH = 10;
+    public const PROGRESSION_COUNT = 10;
 
 
     public $lastCorrectAnswer = null;
@@ -25,7 +25,7 @@ class BrainProgression extends AGame
     private function getQuestionText($firstElement, $step, $position)
     {
         $arMembers = [];
-        for ($i = 0; $i < self::PROGRESSION_LENGTH; $i++) {
+        for ($i = 0; $i < self::PROGRESSION_COUNT; $i++) {
             if ($i != $position) {
                 $arMembers[] = $firstElement + $i * $step;
             } else {
@@ -40,7 +40,7 @@ class BrainProgression extends AGame
     {
         $firstElement = rand(0, self::MAX_NUMBER);
         $step = rand(- self::MAX_STEP, self::MAX_STEP);
-        $position = rand(0, self::PROGRESSION_LENGTH - 1);
+        $position = rand(0, self::PROGRESSION_COUNT - 1);
 
         $text = $this->getQuestionText($firstElement, $step, $position);
         $info = [
@@ -48,6 +48,7 @@ class BrainProgression extends AGame
             $step,
             $position
         ];
+
         return [$text, $info];
     }
 
@@ -55,7 +56,7 @@ class BrainProgression extends AGame
     {
         [$firstElement, $step, $position] = $questionData;
         $answer = $firstElement + $step * $position;
-        $this->lastCorrectAnswer = $answer;
+        $this->setLastCorrectAnswer($answer);
         return $answer;
     }
 }

@@ -8,6 +8,8 @@ class BrainEven extends AGame
 {
     public const MAX_NUMBER = 100;
 
+    private const DIVISOR = 2;
+
     public function __construct()
     {
     }
@@ -27,10 +29,10 @@ class BrainEven extends AGame
     public function getCorrectAnswer($questionData)
     {
         $number = $questionData;
-        if ($number % 2 === 0) {
-            $answer = 'yes';
+        if ($number % self::DIVISOR === 0) {
+            $answer = AGame::ANSWER_YES;
         } else {
-            $answer = 'no';
+            $answer = AGame::ANSWER_NO;
         }
         $this->lastCorrectAnswer = $answer;
         return $answer;

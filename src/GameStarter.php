@@ -34,8 +34,8 @@ class GameStarter
 
     public static function run($gameTitle)
     {
-        $game = self::getGame($gameTitle);
-        $obGame = new GameCore($game);
-        $obGame->play();
+        $currentGame = self::getGame($gameTitle);
+        $gameWrapper = new GameCore($currentGame);
+        $gameWrapper->play();
     }
 }
