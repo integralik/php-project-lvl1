@@ -6,6 +6,8 @@ use Brain\Games\AGame;
 
 class BrainGreatCommonDivisor extends AGame
 {
+    public const MAX_NUMBER = 100;
+
     public $lastCorrectAnswer = null;
 
     public function __construct()
@@ -21,8 +23,8 @@ class BrainGreatCommonDivisor extends AGame
     {
         $max_number = 100;
 
-        $firstArg = rand(0, $max_number);
-        $secondArg = rand(0, $max_number);
+        $firstArg = rand(0, self::MAX_NUMBER);
+        $secondArg = rand(0, self::MAX_NUMBER);
 
         $text = $firstArg . ' ' . $secondArg;
         $info = [
@@ -34,8 +36,7 @@ class BrainGreatCommonDivisor extends AGame
 
     public function getCorrectAnswer($questionData)
     {
-        $firstArg = $questionData[0];
-        $secondArg = $questionData[1];
+        [$firstArg, $secondArg] = $questionData;
 
         $min = min($firstArg, $secondArg);
         for ($i = $min; $i > 0; $i--) {

@@ -6,6 +6,8 @@ use Brain\Games\AGame;
 
 class BrainEven extends AGame
 {
+    public const MAX_NUMBER = 100;
+
     public function __construct()
     {
     }
@@ -17,8 +19,7 @@ class BrainEven extends AGame
 
     public function getQuestionInfo()
     {
-        $max_number = 100;
-        $info = rand(0, $max_number);
+        $info = rand(0, self::MAX_NUMBER);
         $text = $info;
         return [$text, $info];
     }
