@@ -25,9 +25,8 @@ function generateQuestionInfo()
     return $number;
 }
 
-function calculateCorrectAnswer($questionData)
+function calculateCorrectAnswer($number)
 {
-    $number = $questionData;
     if ($number % BRAIN_EVEN_DIVISOR === 0) {
         $answer = ANSWER_YES;
     } else {

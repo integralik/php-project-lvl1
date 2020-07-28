@@ -4,23 +4,11 @@ namespace Brain\Games\GameCaller;
 
 function getNamespace($gameTitle)
 {
-    switch ($gameTitle) {
-        case 'brain-calc':
-            $namespace = "\\Brain\\Games\\Games\\BrainCalc\\";
-            break;
-        case 'brain-even':
-            $namespace = "\\Brain\\Games\\Games\\BrainEven\\";
-            break;
-        case 'brain-gcd':
-            $namespace = "\\Brain\\Games\\Games\\BrainGreatCommonDivisor\\";
-            break;
-        case 'brain-prime':
-            $namespace = "\\Brain\\Games\\Games\\BrainPrime\\";
-            break;
-        case 'brain-progression':
-            $namespace = "\\Brain\\Games\\Games\\BrainProgression\\";
-            break;
+    if ($gameTitle == 'brain-gcd') {
+        return "\\Brain\\Games\\Games\\BrainGreatCommonDivisor\\";
     }
+    $gameTitleCamelized = \Funct\Strings\camelize($gameTitle);
+    $namespace = "\\Brain\\Games\\Games\\{$gameTitleCamelized}\\";
     return $namespace;
 }
 

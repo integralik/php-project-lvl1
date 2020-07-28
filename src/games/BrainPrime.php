@@ -27,20 +27,16 @@ function generateQuestionInfo()
     return $number;
 }
 
-function calculateCorrectAnswer($questionData)
+function calculateCorrectAnswer($number)
 {
-    $number = $questionData;
-
-    if ($number == 0 || $number == 1) {
-        $answer = ANSWER_NO;
-        return $answer;
+    if ($number <= 1) {
+        return ANSWER_NO;
     }
 
     $answer = ANSWER_YES;
     for ($i = $number - 1; $i >= BRAIN_PRIME_START_DIVISOR; $i--) {
         if ($number % $i == 0) {
             $answer = ANSWER_NO;
-            break;
         }
     }
 
