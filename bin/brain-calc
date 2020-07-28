@@ -2,6 +2,6 @@
 <?php
 require_once("autoloader.php");
 
-use Brain\Games\GameStarter;
+use function Brain\Games\GameTrigger\playBrainCalc;
 
-GameStarter::run('brain-calc');
+playBrainCalc();
