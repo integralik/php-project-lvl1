@@ -10,7 +10,8 @@ const BRAIN_EVEN_DIVISOR = 2;
 const BRAIN_EVEN_ANSWER_YES = 'yes';
 const BRAIN_EVEN_ANSWER_NO = 'no';
 
-function isEven($number) {
+function isEven($number)
+{
     return $number % BRAIN_EVEN_DIVISOR === 0;
 }
 
@@ -38,6 +39,7 @@ function calculateCorrectAnswer($number)
 
 function play()
 {
-    $rules = 'Answer "' .  BRAIN_EVEN_ANSWER_YES . '" if the number is even, otherwise answer "' . BRAIN_EVEN_ANSWER_NO . '".';
+    $rules = 'Answer "' .  BRAIN_EVEN_ANSWER_YES . '" if the number is even, otherwise answer "' .
+        BRAIN_EVEN_ANSWER_NO . '".';
     playFlow($rules, __NAMESPACE__);
 }

@@ -47,7 +47,7 @@ function calculateCorrectAnswer($number)
 
 function play()
 {
-    $rules = 'Answer "' . BRAIN_PRIME_ANSWER_YES . '" if given number is prime. Otherwise answer "' . BRAIN_PRIME_ANSWER_NO . '".';
+    $rules = 'Answer "' . BRAIN_PRIME_ANSWER_YES . '" if given number is prime. Otherwise answer "' .
+        BRAIN_PRIME_ANSWER_NO . '".';
     playFlow($rules, __NAMESPACE__);
 }
-
