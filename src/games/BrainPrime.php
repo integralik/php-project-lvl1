@@ -2,43 +2,52 @@
 
 namespace Brain\Games\Games\BrainPrime;
 
-use Brain\Games\AGame;
+use function Brain\Games\GameKernel\playFlow;
 
-use const Brain\Games\GameKernel\ANSWER_NO;
-use const Brain\Games\GameKernel\ANSWER_YES;
-
+const BRAIN_PRIME_MIN_NUMBER = 1;
 const BRAIN_PRIME_MAX_NUMBER = 100;
 const BRAIN_PRIME_START_DIVISOR = 2;
+const BRAIN_PRIME_ANSWER_YES = 'yes';
+const BRAIN_PRIME_ANSWER_NO = 'no';
 
-function obtainWelcomeMessage()
+function isPrime($number)
 {
-    return 'Answer "yes" if given number is prime. Otherwise answer "no".';
+    if ($number <= 1) {
+        return false;
+    }
+
+    for ($i = $number - 1; $i >= BRAIN_PRIME_START_DIVISOR; $i--) {
+        if ($number % $i == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
-function obtainQuestionText($questionData)
+function generateQuestionData()
+{
+    $number = rand(BRAIN_PRIME_MIN_NUMBER, BRAIN_PRIME_MAX_NUMBER);
+    return $number;
+}
+
+function getQuestionText($questionData)
 {
     $text = $questionData;
     return $text;
 }
 
-function generateQuestionInfo()
-{
-    $number = rand(0, BRAIN_PRIME_MAX_NUMBER);
-    return $number;
-}
-
 function calculateCorrectAnswer($number)
 {
-    if ($number <= 1) {
-        return ANSWER_NO;
+    if (isPrime($number)) {
+        return BRAIN_PRIME_ANSWER_YES;
+    } else {
+        return BRAIN_PRIME_ANSWER_NO;
     }
-
-    $answer = ANSWER_YES;
-    for ($i = $number - 1; $i >= BRAIN_PRIME_START_DIVISOR; $i--) {
-        if ($number % $i == 0) {
-            $answer = ANSWER_NO;
-        }
-    }
-
-    return $answer;
 }
+
+function play()
+{
+    $rules = 'Answer "' . BRAIN_PRIME_ANSWER_YES . '" if given number is prime. Otherwise answer "' . BRAIN_PRIME_ANSWER_NO . '".';
+    playFlow($rules, __NAMESPACE__);
+}
+

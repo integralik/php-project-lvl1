@@ -26,11 +26,7 @@
     },
     "autoload": {
         "files": [
-            "src/GameTrigger.php",
             "src/GameKernel.php",
-            "src/GameCaller.php",
-            "src/Teller.php",
-            "src/GetterFromKeyboard.php",
             "src/games/BrainCalc.php",
             "src/games/BrainEven.php",
             "src/games/BrainGreatCommonDivisor.php",

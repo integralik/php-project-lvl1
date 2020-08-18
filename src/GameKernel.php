@@ -2,73 +2,77 @@
 
 namespace Brain\Games\GameKernel;
 
-use function Brain\Games\GameCaller\calculateCorrectAnswer;
-use function Brain\Games\GameCaller\generateQuestionInfo;
-use function Brain\Games\GameCaller\obtainQuestionText;
-use function Brain\Games\GetterFromKeyboard\getAnswer;
-use function Brain\Games\GetterFromKeyboard\getUsername;
-use function Brain\Games\Teller\tellConfirmCorrectAnswer;
-use function Brain\Games\Teller\tellCorrectAnswer;
-use function Brain\Games\Teller\tellGameIsLost;
-use function Brain\Games\Teller\tellGameIsWon;
-use function Brain\Games\Teller\tellHello;
-use function Brain\Games\Teller\tellQuestion;
-use function Brain\Games\Teller\tellWelcomeMessage;
+use function Brain\Games\GameCaller\obtainWelcomeMessage;
+use function cli\line;
+use function cli\prompt;
 
 const TRIES_COUNT = 3;
-const ANSWER_YES = 'yes';
-const ANSWER_NO = 'no';
 
-function tellResponseToAnswer($answer, $correctAnswer)
+function welcomeUser($welcomeMessage)
 {
-    if ($answer != $correctAnswer) {
-        tellCorrectAnswer($answer, $correctAnswer);
-    } else {
-        tellConfirmCorrectAnswer();
-    }
+    line('Welcome to Brain Games!');
+    line($welcomeMessage);
 }
 
-function playOnce($gameTitle)
+function getUsername()
 {
-    $questionData = generateQuestionInfo($gameTitle);
-    $questionText = obtainQuestionText($gameTitle, $questionData);
-    tellQuestion($questionText);
-
-    $answer = getAnswer();
-    $correctAnswer = calculateCorrectAnswer($gameTitle, $questionData);
-    tellResponseToAnswer($answer, $correctAnswer);
-
-    return $answer == $correctAnswer;
+    $username = prompt('May I have your name?');
+    return $username;
 }
 
-function playGame($gameTitle)
+function generateData($namespace)
 {
-    $isLost = false;
+    $gameData = [];
+
+    $generateQuestionDataFunc = $namespace . '\\generateQuestionData';
+    $generateQuestionTextFunc = $namespace . '\\getQuestionText';
+    $generateAnswerTextFunc = $namespace . '\\calculateCorrectAnswer';
+
     for ($i = 0; $i < TRIES_COUNT; $i++) {
-        $isLost = !playOnce($gameTitle);
-        if ($isLost) {
-            break;
+        $questionData = $generateQuestionDataFunc();
+        $gameData[] = [
+            $questionData,
+            $generateQuestionTextFunc($questionData),
+            $generateAnswerTextFunc($questionData)
+        ];
+    }
+    return $gameData;
+}
+
+function playGame($gameData)
+{
+    foreach ($gameData as $gameItem) {
+        [$questionData, $questionText, $correctAnswer] = $gameItem;
+
+        line('');
+        line("Question: " . $questionText);
+
+        $answer = prompt('Your answer');
+
+        if ($answer != $correctAnswer) {
+            line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
+            return false;
+        } else {
+            line('Correct!');
         }
     }
-    return !$isLost;
+    return true;
 }
 
-function displayResults($hasWon, $username)
+function showEndGameMessage($username, $result)
 {
-    if ($hasWon) {
-        tellGameIsWon($username);
+    if ($result) {
+        line("Congratulations, {$username}!");
     } else {
-        tellGameIsLost($username);
+        line("Let's try again, {$username}!");
     }
 }
 
-function runGame($gameTitle)
+function playFlow($rulesText, $gameNamespace)
 {
-    tellWelcomeMessage($gameTitle);
+    welcomeUser($rulesText);
     $username = getUsername();
-    tellHello($username);
-
-    $hasWon = playGame($gameTitle);
-
-    displayResults($hasWon, $username);
+    $gameData = generateData($gameNamespace);
+    $result = playGame($gameData);
+    showEndGameMessage($username, $result);
 }
