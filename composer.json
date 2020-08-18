@@ -7,22 +7,24 @@
             "email": "integralik@gmail.com"
         }
     ],
-	"bin": [
-      "bin/brain-calc",
-	  "bin/brain-even",
-      "bin/brain-gcd",
-      "bin/brain-prime",
-      "bin/brain-progression"
+    "bin": [
+        "bin/brain-calc",
+        "bin/brain-even",
+        "bin/brain-gcd",
+        "bin/brain-prime",
+        "bin/brain-progression"
     ],
-	"minimum-stability": "dev",
-	"scripts": {
-		"phpcs": "phpcs"
-	},
+    "scripts": {
+        "phpcs": "phpcs"
+    },
     "require": {
         "wp-cli/php-cli-tools": "^0.11.11",
         "funct/funct": "^1.0@dev"
     },
-	"autoload": {
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+    "autoload": {
         "files": [
             "src/GameTrigger.php",
             "src/GameKernel.php",
@@ -35,8 +37,5 @@
             "src/games/BrainPrime.php",
             "src/games/BrainProgression.php"
         ]
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "^3.5"
     }
 }
