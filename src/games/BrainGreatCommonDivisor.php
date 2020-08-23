@@ -13,41 +13,23 @@ function gcd($number1, $number2)
     $min = min($number1, $number2);
     for ($i = $min; $i > 0; $i--) {
         if ($number1 % $i == 0 && $number2 % $i == 0) {
-            $answer = $i;
-            break;
+            return $i;
         }
     }
-
-    return $answer;
 }
 
-function generateQuestionData()
+function generateDataset()
 {
-    $firstArg = rand(BRAIN_GCD_MIN_NUMBER, BRAIN_GCD_MAX_NUMBER);
-    $secondArg = rand(BRAIN_GCD_MIN_NUMBER, BRAIN_GCD_MAX_NUMBER);
+    $firstNumber = rand(BRAIN_GCD_MIN_NUMBER, BRAIN_GCD_MAX_NUMBER);
+    $secondNumber = rand(BRAIN_GCD_MIN_NUMBER, BRAIN_GCD_MAX_NUMBER);
 
-    $info = [
-        $firstArg,
-        $secondArg
+    return [
+        'question' => $firstNumber . ' ' . $secondNumber,
+        'answer' => gcd($firstNumber, $secondNumber)
     ];
-    return $info;
-}
-
-function getQuestionText($questionData)
-{
-    [$firstArg, $secondArg] = $questionData;
-    $text = $firstArg . ' ' . $secondArg;
-    return $text;
-}
-
-function calculateCorrectAnswer($questionData)
-{
-    [$firstArg, $secondArg] = $questionData;
-
-    return gcd($firstArg, $secondArg);
 }
 
 function play()
 {
-    playFlow(BRAIN_GCD_RULES, __NAMESPACE__);
+    playFlow(BRAIN_GCD_RULES, __NAMESPACE__ . '\\generateDataset');
 }
