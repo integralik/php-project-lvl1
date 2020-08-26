@@ -2,7 +2,7 @@
 
 namespace Brain\Games\Games\BrainCalc;
 
-use function Brain\Games\GameKernel\playFlow;
+use function Brain\Games\GameKernel\flow;
 
 const BRAIN_CALC_MIN_NUMBER = 0;
 const BRAIN_CALC_MAX_NUMBER = 20;
@@ -11,7 +11,7 @@ const BRAIN_CALC_OPERATIONS = [
     'subtract' => '-',
     'multiply' => '*'
 ];
-const BRAIN_CALC_RULES = 'What is the result of the expression?';
+const BRAIN_CALC_RULE = 'What is the result of the expression?';
 
 function calculateCorrectAnswer($firstNumber, $operation, $secondNumber)
 {
@@ -34,7 +34,7 @@ function generateDataset()
     $operations = array_values(BRAIN_CALC_OPERATIONS);
 
     $firstNumber = rand(BRAIN_CALC_MIN_NUMBER, BRAIN_CALC_MAX_NUMBER);
-    $operation = $operations[rand(0, count($operations) - 1)];
+    $operation = $operations[array_rand($operations)];
     $secondNumber = rand(BRAIN_CALC_MIN_NUMBER, BRAIN_CALC_MAX_NUMBER);
 
     return [
@@ -45,5 +45,5 @@ function generateDataset()
 
 function play()
 {
-    playFlow(BRAIN_CALC_RULES, __NAMESPACE__ . '\\generateDataset');
+    flow(BRAIN_CALC_RULE, fn() => generateDataset());
 }

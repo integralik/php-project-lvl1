@@ -2,11 +2,11 @@
 
 namespace Brain\Games\Games\BrainEven;
 
-use function Brain\Games\GameKernel\playFlow;
+use function Brain\Games\GameKernel\flow;
 
 const BRAIN_EVEN_MIN_NUMBER = 0;
 const BRAIN_EVEN_MAX_NUMBER = 100;
-const BRAIN_EVEN_RULES = 'Answer "yes" if the number is even, otherwise answer "no".';
+const BRAIN_EVEN_RULE = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 function isEven($number)
 {
@@ -24,5 +24,5 @@ function generateDataset()
 
 function play()
 {
-    playFlow(BRAIN_EVEN_RULES, __NAMESPACE__ . '\\generateDataset');
+    flow(BRAIN_EVEN_RULE, fn() => generateDataset());
 }

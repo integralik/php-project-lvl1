@@ -2,11 +2,11 @@
 
 namespace Brain\Games\Games\BrainPrime;
 
-use function Brain\Games\GameKernel\playFlow;
+use function Brain\Games\GameKernel\flow;
 
 const BRAIN_PRIME_MIN_NUMBER = 1;
 const BRAIN_PRIME_MAX_NUMBER = 100;
-const BRAIN_PRIME_RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const BRAIN_PRIME_RULE = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function isPrime($number)
 {
@@ -14,11 +14,19 @@ function isPrime($number)
         return false;
     }
 
-    for ($i = $number - 1; $i > 1; $i--) {
+    /* Calculating the value of this function for the first 10 000 natural numbers
+       using square root of N lasts on average 0.009 sec
+       using N / 2 - lasts on average 0.216 sec
+       if there is a divisor that is more than sqrt(N), then there also is a divisor
+       of the same number that is less than sqrt(N)
+    */
+
+    for ($i = round(sqrt($number)); $i > 1; $i--) {
         if ($number % $i == 0) {
             return false;
         }
     }
+
     return true;
 }
 
@@ -33,5 +41,5 @@ function generateDataset()
 
 function play()
 {
-    playFlow(BRAIN_PRIME_RULES, __NAMESPACE__ . '\\generateDataset');
+    flow(BRAIN_PRIME_RULE, fn() => generateDataset());
 }

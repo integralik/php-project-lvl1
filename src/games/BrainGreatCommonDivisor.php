@@ -2,11 +2,11 @@
 
 namespace Brain\Games\Games\BrainGreatCommonDivisor;
 
-use function Brain\Games\GameKernel\playFlow;
+use function Brain\Games\GameKernel\flow;
 
 const BRAIN_GCD_MIN_NUMBER = 1;
 const BRAIN_GCD_MAX_NUMBER = 100;
-const BRAIN_GCD_RULES = 'Find the greatest common divisor of given numbers.';
+const BRAIN_GCD_RULE = 'Find the greatest common divisor of given numbers.';
 
 function gcd($number1, $number2)
 {
@@ -31,5 +31,5 @@ function generateDataset()
 
 function play()
 {
-    playFlow(BRAIN_GCD_RULES, __NAMESPACE__ . '\\generateDataset');
+    flow(BRAIN_GCD_RULE, fn() => generateDataset());
 }

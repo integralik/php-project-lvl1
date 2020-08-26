@@ -2,22 +2,23 @@
 
 namespace Brain\Games\Games\BrainProgression;
 
-use function Brain\Games\GameKernel\playFlow;
+use function Brain\Games\GameKernel\flow;
 
 const BRAIN_PROGRESSION_MIN_START_NUMBER = 0;
 const BRAIN_PROGRESSION_MAX_START_NUMBER = 100;
+const BRAIN_PROGRESSION_MIN_STEP = -10;
 const BRAIN_PROGRESSION_MAX_STEP = 10;
 const BRAIN_PROGRESSION_COUNT = 10;
-const BRAIN_PROGRESSION_RULES = 'What number is missing in the progression?';
+const BRAIN_PROGRESSION_RULE = 'What number is missing in the progression?';
 
-function getQuestionText($firstElement, $step, $position)
+function getQuestion($firstElement, $step, $position)
 {
-    $arMembers = [];
+    $elements = [];
     for ($i = 0; $i < BRAIN_PROGRESSION_COUNT; $i++) {
         if ($i != $position) {
-            $arMembers[] = $firstElement + $i * $step;
+            $elements[] = $firstElement + $i * $step;
         } else {
-            $arMembers[] = '..';
+            $elements[] = '..';
         }
     }
 
@@ -27,16 +28,16 @@ function getQuestionText($firstElement, $step, $position)
 function generateDataset()
 {
     $firstElement = rand(BRAIN_PROGRESSION_MIN_START_NUMBER, BRAIN_PROGRESSION_MAX_START_NUMBER);
-    $step = rand(- BRAIN_PROGRESSION_MAX_STEP, BRAIN_PROGRESSION_MAX_STEP);
+    $step = rand(BRAIN_PROGRESSION_MIN_STEP, BRAIN_PROGRESSION_MAX_STEP);
     $position = rand(0, BRAIN_PROGRESSION_COUNT - 1);
 
     return [
-        'question' => getQuestionText($firstElement, $step, $position),
+        'question' => getQuestion($firstElement, $step, $position),
         'answer' => $firstElement + $step * $position
     ];
 }
 
 function play()
 {
-    playFlow(BRAIN_PROGRESSION_RULES, __NAMESPACE__ . '\\generateDataset');
+    flow(BRAIN_PROGRESSION_RULE, fn() => generateDataset());
 }
