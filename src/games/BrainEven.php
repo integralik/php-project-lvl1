@@ -13,16 +13,13 @@ function isEven($number)
     return $number % 2 === 0;
 }
 
-function generateDataset()
-{
-    $number = rand(BRAIN_EVEN_MIN_NUMBER, BRAIN_EVEN_MAX_NUMBER);
-    return [
-        'question' => $number,
-        'answer' => isEven($number) ? 'yes' : 'no'
-    ];
-}
-
 function play()
 {
-    flow(BRAIN_EVEN_RULE, fn() => generateDataset());
+    flow(BRAIN_EVEN_RULE, function() {
+        $number = rand(BRAIN_EVEN_MIN_NUMBER, BRAIN_EVEN_MAX_NUMBER);
+        return [
+            'question' => $number,
+            'answer' => isEven($number) ? 'yes' : 'no'
+        ];
+    });
 }

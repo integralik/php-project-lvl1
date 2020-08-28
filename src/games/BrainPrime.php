@@ -30,16 +30,13 @@ function isPrime($number)
     return true;
 }
 
-function generateDataset()
-{
-    $number = rand(BRAIN_PRIME_MIN_NUMBER, BRAIN_PRIME_MAX_NUMBER);
-    return [
-        'question' => $number,
-        'answer' => isPrime($number) ? 'yes' : 'no'
-    ];
-}
-
 function play()
 {
-    flow(BRAIN_PRIME_RULE, fn() => generateDataset());
+    flow(BRAIN_PRIME_RULE, function() {
+        $number = rand(BRAIN_PRIME_MIN_NUMBER, BRAIN_PRIME_MAX_NUMBER);
+        return [
+            'question' => $number,
+            'answer' => isPrime($number) ? 'yes' : 'no'
+        ];
+    });
 }

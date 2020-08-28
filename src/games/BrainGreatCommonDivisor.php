@@ -18,18 +18,15 @@ function gcd($number1, $number2)
     }
 }
 
-function generateDataset()
-{
-    $firstNumber = rand(BRAIN_GCD_MIN_NUMBER, BRAIN_GCD_MAX_NUMBER);
-    $secondNumber = rand(BRAIN_GCD_MIN_NUMBER, BRAIN_GCD_MAX_NUMBER);
-
-    return [
-        'question' => $firstNumber . ' ' . $secondNumber,
-        'answer' => gcd($firstNumber, $secondNumber)
-    ];
-}
-
 function play()
 {
-    flow(BRAIN_GCD_RULE, fn() => generateDataset());
+    flow(BRAIN_GCD_RULE, function() {
+        $firstNumber = rand(BRAIN_GCD_MIN_NUMBER, BRAIN_GCD_MAX_NUMBER);
+        $secondNumber = rand(BRAIN_GCD_MIN_NUMBER, BRAIN_GCD_MAX_NUMBER);
+
+        return [
+            'question' => $firstNumber . ' ' . $secondNumber,
+            'answer' => gcd($firstNumber, $secondNumber)
+        ];
+    });
 }

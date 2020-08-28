@@ -29,21 +29,18 @@ function calculateCorrectAnswer($firstNumber, $operation, $secondNumber)
     return $answer;
 }
 
-function generateDataset()
-{
-    $operations = array_values(BRAIN_CALC_OPERATIONS);
-
-    $firstNumber = rand(BRAIN_CALC_MIN_NUMBER, BRAIN_CALC_MAX_NUMBER);
-    $operation = $operations[array_rand($operations)];
-    $secondNumber = rand(BRAIN_CALC_MIN_NUMBER, BRAIN_CALC_MAX_NUMBER);
-
-    return [
-        'question' => $firstNumber . ' ' . $operation . ' ' . $secondNumber,
-        'answer' => calculateCorrectAnswer($firstNumber, $operation, $secondNumber)
-    ];
-}
-
 function play()
 {
-    flow(BRAIN_CALC_RULE, fn() => generateDataset());
+    flow(BRAIN_CALC_RULE, function() {
+        $operations = array_values(BRAIN_CALC_OPERATIONS);
+
+        $firstNumber = rand(BRAIN_CALC_MIN_NUMBER, BRAIN_CALC_MAX_NUMBER);
+        $operation = $operations[array_rand($operations)];
+        $secondNumber = rand(BRAIN_CALC_MIN_NUMBER, BRAIN_CALC_MAX_NUMBER);
+
+        return [
+            'question' => $firstNumber . ' ' . $operation . ' ' . $secondNumber,
+            'answer' => calculateCorrectAnswer($firstNumber, $operation, $secondNumber)
+        ];
+    });
 }

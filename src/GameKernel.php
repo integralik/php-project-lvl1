@@ -24,8 +24,8 @@ function flow($rule, callable $generateData)
         $answer = prompt('Your answer');
 
         if ($answer != $correctAnswer) {
-            line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.
-            Let's try again, {$username}!");
+            line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
+            line("Let's try again, {$username}!");
             return false;
         } else {
             line('Correct!');
