@@ -27,7 +27,7 @@ function getQuestion($firstElement, $step, $position)
 
 function play()
 {
-    flow(BRAIN_PROGRESSION_RULE, function() {
+    flow(BRAIN_PROGRESSION_RULE, function () {
         $firstElement = rand(BRAIN_PROGRESSION_MIN_START_NUMBER, BRAIN_PROGRESSION_MAX_START_NUMBER);
         $step = rand(BRAIN_PROGRESSION_MIN_STEP, BRAIN_PROGRESSION_MAX_STEP);
         $position = rand(0, BRAIN_PROGRESSION_COUNT - 1);
