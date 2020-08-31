@@ -26,11 +26,11 @@
     "autoload": {
         "files": [
             "src/GameKernel.php",
-            "src/games/BrainCalc.php",
-            "src/games/BrainEven.php",
-            "src/games/BrainGreatCommonDivisor.php",
-            "src/games/BrainPrime.php",
-            "src/games/BrainProgression.php"
+            "src/games/Calc.php",
+            "src/games/Even.php",
+            "src/games/GreatCommonDivisor.php",
+            "src/games/Prime.php",
+            "src/games/Progression.php"
         ]
     }
 }

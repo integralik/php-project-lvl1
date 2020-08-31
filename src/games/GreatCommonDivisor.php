@@ -20,7 +20,7 @@ function gcd($number1, $number2)
 
 function play()
 {
-    flow(BRAIN_GCD_RULE, function () {
+    return flow(BRAIN_GCD_RULE, function () {
         $firstNumber = rand(BRAIN_GCD_MIN_NUMBER, BRAIN_GCD_MAX_NUMBER);
         $secondNumber = rand(BRAIN_GCD_MIN_NUMBER, BRAIN_GCD_MAX_NUMBER);
 

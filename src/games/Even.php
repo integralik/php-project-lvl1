@@ -15,7 +15,7 @@ function isEven($number)
 
 function play()
 {
-    flow(BRAIN_EVEN_RULE, function () {
+    return flow(BRAIN_EVEN_RULE, function () {
         $number = rand(BRAIN_EVEN_MIN_NUMBER, BRAIN_EVEN_MAX_NUMBER);
         return [
             'question' => $number,

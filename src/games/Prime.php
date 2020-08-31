@@ -32,7 +32,7 @@ function isPrime($number)
 
 function play()
 {
-    flow(BRAIN_PRIME_RULE, function () {
+    return flow(BRAIN_PRIME_RULE, function () {
         $number = rand(BRAIN_PRIME_MIN_NUMBER, BRAIN_PRIME_MAX_NUMBER);
         return [
             'question' => $number,

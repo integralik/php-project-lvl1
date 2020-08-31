@@ -31,7 +31,7 @@ function calculateCorrectAnswer($firstNumber, $operation, $secondNumber)
 
 function play()
 {
-    flow(BRAIN_CALC_RULE, function () {
+    return flow(BRAIN_CALC_RULE, function () {
         $operations = array_values(BRAIN_CALC_OPERATIONS);
 
         $firstNumber = rand(BRAIN_CALC_MIN_NUMBER, BRAIN_CALC_MAX_NUMBER);
