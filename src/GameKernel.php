@@ -14,7 +14,6 @@ function flow($rule, callable $generateData)
 
     $username = prompt('May I have your name?');
 
-    $gameResult = true;
     for ($i = 0; $i < TRIES_COUNT; $i++) {
         ['question' => $questionText, 'answer' => $correctAnswer] = $generateData();
 
